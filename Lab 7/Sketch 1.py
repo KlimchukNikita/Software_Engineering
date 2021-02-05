@@ -1,6 +1,11 @@
+# Вывести построчно матрицу 2x3
+# Реализовать в виде класса
+
 class Matrix:
     def __init__(self, value=None, rows=0, cols=0):
         if value is None:
+            # Проверка, что rows > 0
+            # Проверка, что cols > 0
             self.value = [[0 for _ in range(cols)] for _ in range(rows)]
         else:
             self.value = value
@@ -17,6 +22,7 @@ class Matrix:
         return len(self.value)
 
     def col_count(self):
+        # Проверка, что есть хотя бы одна строка
         return len(self.value[0])
 
     def set_one(self):
@@ -32,9 +38,13 @@ class Matrix:
         return 0
 
     def det(self):
+        # Матрица не квадратная
+        # Матрица вырожденная
         return 0
 
     def __add__(self, other):
+        # Если other - не Matrix - кидаем Exception
+        # Если не совпали размерности - кидаем Exception
         res = Matrix(None, self.row_count(), self.col_count())
         for row_idx in range(len(self.value)):
             for col_idx in range(len(self.value[row_idx])):
@@ -42,6 +52,8 @@ class Matrix:
         return res
 
     def __mul__(self, other):
+        # Если other - не Matrix - кидаем Exception
+        # Если не совпали размерности - кидаем Exception
         pass
 
 A = Matrix([[1, 2, 3], [4, 5, 6]])
